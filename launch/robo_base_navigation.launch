@@ -28,6 +28,15 @@
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
   </include>
 
+  <!-- set initialpose -->
+  <group if="$(arg sim)">
+    <node name="set_initialpose" pkg="set_initialpose" type="set_initialpose.py" output="screen">
+      <!-- [position, quaternion] -->
+      <rosparam param="initialpose">[-2,1,0, 0,0,0,1]</rosparam>
+    </node>
+  </group>
+  
+
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
