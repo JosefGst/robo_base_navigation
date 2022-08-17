@@ -4,7 +4,7 @@
 
   <arg name="sim" default="true"/>
   <arg name="map_file" value="$(find robo_base_navigation)/maps/lab.yaml" unless="$(arg sim)" />
-  <arg name="map_file" value="$(find robo_base_slam)/maps/cartographer.yaml" if="$(arg sim)" />
+  <arg name="map_file" value="$(find robo_base_slam)/maps/cartographer3d.yaml" if="$(arg sim)" />
   <!-- <arg name="map_file" default="$(find robo_base_navigation)/maps/robo9-office-3-map-edit.yaml"/> -->
 
   <arg name="open_rviz" default="true"/>
@@ -20,7 +20,10 @@
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
   <!-- AMCL -->
-  <include file="$(find robo_base_navigation)/launch/amcl.launch"/>
+  <!-- <include file="$(find robo_base_navigation)/launch/amcl.launch"/> -->
+
+  <!-- Cartographer localization -->
+  <include file="$(find robo_base_slam)/launch/robo_base_cartographer_loc3d.launch" />
 
   <!-- move_base -->
   <include file="$(find robo_base_navigation)/launch/move_base_$(arg planner).launch">

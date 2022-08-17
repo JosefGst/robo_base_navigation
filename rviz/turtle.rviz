@@ -31,7 +31,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: PointCloud2
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -84,9 +84,17 @@ Visualization Manager:
           Value: true
         base_footprint:
           Value: true
-        cam_frame_id:
+        camera_depth_frame:
           Value: true
-        depth_cam:
+        camera_depth_optical_frame:
+          Value: true
+        camera_link:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
+          Value: true
+        imu_link:
           Value: true
         map:
           Value: true
@@ -114,6 +122,8 @@ Visualization Manager:
           odom:
             base_footprint:
               agv_base_link:
+                imu_link:
+                  {}
                 wheel_back_left_link:
                   {}
                 wheel_back_right_link:
@@ -124,9 +134,13 @@ Visualization Manager:
                   {}
               agv_lidar:
                 {}
-              depth_cam:
-                cam_frame_id:
-                  {}
+              camera_link:
+                camera_depth_frame:
+                  camera_depth_optical_frame:
+                    {}
+                camera_rgb_frame:
+                  camera_rgb_optical_frame:
+                    {}
               velodyne_base_link:
                 velodyne:
                   {}
@@ -442,6 +456,16 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -466,25 +490,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 5.0855231285095215
+      Distance: 7.469728469848633
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -4.221199989318848
-        Y: 0.8312377333641052
-        Z: 0.8097876310348511
+        X: -1.0135819911956787
+        Y: -2.628098726272583
+        Z: 1.2473406791687012
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.44979751110076904
+      Pitch: 0.734797477722168
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.078166961669922
+      Yaw: 4.033166885375977
     Saved: ~
 Window Geometry:
   Displays:
