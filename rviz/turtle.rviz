@@ -140,10 +140,6 @@ Visualization Manager:
                     {}
                 camera_rgb_frame:
                   camera_rgb_optical_frame:
-                    {}
-              velodyne_base_link:
-                velodyne:
-                  {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -509,6 +505,12 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
       Yaw: 4.033166885375977
+=======
+      Pitch: 0.44979751110076904
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 4.078166961669922
+>>>>>>> 1ac053b1da3dde47d50670f74bef9219af26bc49
     Saved: ~
 Window Geometry:
   Displays:
