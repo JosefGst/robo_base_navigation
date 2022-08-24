@@ -8,7 +8,7 @@
   <!-- <arg name="map_file" default="$(find robo_base_navigation)/maps/robo9-office-3-map-edit.yaml"/> -->
 
   <arg name="open_rviz" default="true"/>
-  <arg name="move_forward_only" default="false"/>
+  <arg name="move_forward_only" default="true"/>
   <arg name="planner" default="turtle" doc="local planner [DWA, eband, teb, teb_omni, tut]"/>
 
   <!-- robo_base -->
