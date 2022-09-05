@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Arguments -->
-  <arg name="model" default="deliverybot"/>
+  <arg name="model" default="tko_robot"/>
   <arg name="map_file" default="$(find robo_base_slam)/maps/tko_gazebo.yaml"/>
   
   <include file="$(find robo_base_navigation)/launch/multi/multi_0_robo_base_navigation.launch">

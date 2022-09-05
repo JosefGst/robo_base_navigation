@@ -5,11 +5,11 @@
   <arg name="map_file" default="$(find robo_base_slam)/maps/tko_gazebo.yaml"/>
   <arg name="open_rviz" default="false"/>
   <arg name="move_forward_only" default="true"/>
-  <arg name="first_tb3" default="tb3_0" />
-  <arg name="second_tb3" default="tb3_1" />
-  <arg name="third_tb3" default="tb3_2" />
+  <arg name="robot1" default="robot1" />
+  <arg name="robot2" default="robot2" />
+  <arg name="robot3" default="robot3" />
   
-  <group ns = "$(arg first_tb3)">
+  <group ns = "$(arg robot1)">
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
@@ -25,12 +25,12 @@
    <param name="transform_tolerance"       value="0.5"/>
    <param name="recovery_alpha_slow"       value="0.00"/>
    <param name="recovery_alpha_fast"       value="0.00"/>
-   <param name="initial_pose_x"            value="-30"/>
-   <param name="initial_pose_y"            value="-10"/>
+   <param name="initial_pose_x"            value="-28"/>
+   <param name="initial_pose_y"            value="-11"/>
    <param name="initial_pose_a"            value="0"/>
    <param name="gui_publish_rate"          value="50.0"/>
 
-   <remap from="scan"                      to="base_scan"/>
+   <!-- <remap from="scan"                      to="base_scan"/> -->
    <param name="laser_max_range"           value="3.5"/>
    <param name="laser_max_beams"           value="180"/>
    <param name="laser_z_hit"               value="0.5"/>
@@ -47,8 +47,8 @@
    <param name="odom_alpha2"               value="0.1"/>
    <param name="odom_alpha3"               value="0.1"/>
    <param name="odom_alpha4"               value="0.1"/>
-   <param name="odom_frame_id"             value="/$(arg first_tb3)/odom"/>
-   <param name="base_frame_id"             value="/$(arg first_tb3)/base_footprint"/>
+   <param name="odom_frame_id"             value="$(arg robot1)/odom"/>
+   <param name="base_frame_id"             value="$(arg robot1)/base_footprint"/>
 
  </node>
 
@@ -62,10 +62,10 @@
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
-    <rosparam file="$(find robo_base_navigation)/multi_param/multi_param0/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find robo_base_navigation)/multi_param/multi_param0/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robo_base_navigation)/multi_param/multi_param0/$(arg model)/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robo_base_navigation)/multi_param/multi_param0/$(arg model)/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find robo_base_navigation)/multi_param/multi_param0/move_base_params.yaml" command="load" />
-    <rosparam file="$(find robo_base_navigation)/multi_param/multi_param0/dwa_local_planner_params_$(arg model).yaml" command="load" />
+    <rosparam file="$(find robo_base_navigation)/multi_param/multi_param0/$(arg model)/dwa_local_planner_params_$(arg model).yaml" command="load" />
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
     <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
